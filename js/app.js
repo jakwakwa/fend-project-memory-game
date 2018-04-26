@@ -6,7 +6,13 @@ let cardDeckHtml = document.getElementsByClassName("card");
 // used spread operator to combine htmlCollection into a new Array
 let cards = [...cardDeckHtml];
 
-console.log(cards);
+// loop to add event listeners to each card
+for (let i = 0; i < cards.length; i++) {
+    cards[i].addEventListener("click", /*displayCard*/ function () {
+        console.log("Card Clicked");
+    });
+};
+// 'displayCard' is a function we'll talk about this soon...
 
 /*
  * Display the cards on the page
