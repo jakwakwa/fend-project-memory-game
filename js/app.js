@@ -6,20 +6,40 @@ let cardDeckHtml = document.getElementsByClassName("card");
 // used spread operator to combine htmlCollection into a new Array
 let cards = [...cardDeckHtml];
 
+// deck of all cards in game
+const deck = document.querySelector(".deck");
+
 // loop to add event listeners to each card
 for (let i = 0; i < cards.length; i++) {
-    cards[i].addEventListener("click", /*displayCard*/ function () {
+    cards[i].addEventListener("click", /*displayCard function*/ function () {
         console.log("Card Clicked");
     });
 };
 // 'displayCard' is a function we'll talk about this soon...
-
+// toggles open and show class to display cards
+var displayCard = function () {
+    this.classList.toggle("open");
+    this.classList.toggle("show");
+    this.classList.toggle("disabled");
+}
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+
+// deck of all cards in game
+function startGame() {
+
+    var shuffledCards = shuffle(cards);
+
+    for (let i = 0; i < shuffledCards.length; i++) {
+        [].forEach.call(shuffledCards, function (item) {
+            deck.appendChild(item);
+        });
+    }
+}
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
