@@ -1,7 +1,12 @@
 /*
  * Create a list that holds all of your cards
  */
+let cardDeckHtml = document.getElementsByClassName("card");
 
+// used spread operator to combine htmlCollection into a new Array
+let cards = [...cardDeckHtml];
+
+console.log(cards);
 
 /*
  * Display the cards on the page
