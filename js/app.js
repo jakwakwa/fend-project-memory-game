@@ -16,18 +16,18 @@ let counter = document.querySelector('.moves');
 // set initial counter to 0
 counter.innerHTML = moves;
 
-// loop to add event listeners to each card
-for (let i = 0; i < cards.length; i++) {
-    cards[i].addEventListener("click", /*displayCard function*/ function () {
-        console.log("Card Clicked");
-    });
-};
+
+// array for opened cards
+var openedCards = [];
+
+// declaring variable of matchedCards
+let matchedCard = document.getElementsByClassName("match");
+
+
 // 'displayCard' is a function we'll talk about this soon...
 // toggles open and show class to display cards
 var displayCard = function () {
-    this.classList.toggle("open");
-    this.classList.toggle("show");
-    this.classList.toggle("disabled");
+    this.classList.add("open", "show", "disabled");
 }
 
 /*
@@ -40,9 +40,12 @@ function startGame() {
 
     var shuffledCards = shuffle(cards);
 
-    for (const card in shuffledCards) {
-        deck.appendChild(shuffledCards[card]);
+    for (var i = 0; i < shuffledCards.length; i++) {
+        // deck.innerHTML = "";
+        deck.appendChild(shuffledCards[i]);
+        cards[i].classList.remove("show", "open", "match", "disabled");
     }
+
 }
 
 window.onload = startGame();
@@ -51,6 +54,57 @@ function moveCounter() {
     moves++;
     counter.innerHTML = moves;
 }
+
+//add opened cards to OpenedCards list and check if cards are match or not
+function cardOpen() {
+
+    openedCards.push(this);
+
+    var arrLength = openedCards.length;
+
+    if (arrLength === 2) {
+        moveCounter(); // add move counter by 1
+        // checks to see if two cards are the same eg. "leaf === "leaf" = true "
+        if (openedCards[0].type === openedCards[1].type) {
+            matched();
+        } else {
+            unmatched();
+        }
+    }
+};
+
+// when cards match
+function matched() {
+    openedCards[0].classList.add("match", "disabled");
+    openedCards[1].classList.add("match", "disabled");
+    openedCards[0].classList.remove("show", "open");
+    openedCards[1].classList.remove("show", "open");
+    openedCards = [];
+}
+
+// when cards don't match
+function unmatched() {
+    openedCards[0].classList.add("no-match");
+    openedCards[1].classList.add("no-match");
+    // disable();
+    setTimeout(function () {
+        openedCards[0].classList.remove("show", "open", "no-match");
+        openedCards[1].classList.remove("show", "open", "no-match");
+        // enable();
+        openedCards = [];
+    }, 1100);
+}
+
+// finished -- congratulations message
+function congratulations() {
+    if (matchedCard.length === 16) {
+        console.log('finished!');
+    } else {
+        console.log(`keep playing.. ${16 / 2 - matchedCard.length} matches to complete`);
+    };
+}
+
+
 
 
 
@@ -80,3 +134,11 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+
+// loop to add event listeners to each card
+for (let i = 0; i < cards.length; i++) {
+    cards[i].addEventListener("click", displayCard);
+    cards[i].addEventListener("click", cardOpen);
+    cards[i].addEventListener("click", congratulations);
+};
