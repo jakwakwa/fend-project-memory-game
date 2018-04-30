@@ -6,6 +6,16 @@ let cardDeckHtml = document.getElementsByClassName("card");
 // used spread operator to combine htmlCollection into a new Array
 let cards = [...cardDeckHtml];
 
+// deck of all cards in game
+const deck = document.querySelector(".deck");
+
+// deck of all cards in game
+let moves = 0;
+
+let counter = document.querySelector('.moves');
+// set initial counter to 0
+counter.innerHTML = moves;
+
 // loop to add event listeners to each card
 for (let i = 0; i < cards.length; i++) {
     cards[i].addEventListener("click", /*displayCard function*/ function () {
@@ -20,8 +30,6 @@ var displayCard = function () {
     this.classList.toggle("disabled");
 }
 
-// deck of all cards in game
-const deck = document.querySelector(".deck");
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -38,6 +46,12 @@ function startGame() {
 }
 
 window.onload = startGame();
+
+function moveCounter() {
+    moves++;
+    counter.innerHTML = moves;
+}
+
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
