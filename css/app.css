@@ -75,6 +75,11 @@ h1 {
     font-size: 33px;
 }
 
+.deck .card.disabled {
+    pointer-events: none;
+    opacity: 0.9;
+}
+
 .deck .card.match {
     cursor: default;
     background: #02ccba;
@@ -92,6 +97,8 @@ h1 {
  */
 
 .score-panel {
+    display: flex;
+    justify-content: space-around;
     text-align: left;
     width: 345px;
     margin-bottom: 10px;
@@ -113,3 +120,26 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+/*
+ * Styles for winning popup
+ */
+ /* #modal {
+    display: none;
+ } */
+ .overlay {
+     position: absolute;
+     top: 0;
+     z-index: 999;
+     background: rgba(46, 61, 73, 0.5);
+     width: 100vw;
+     height: 100vh;
+ }
+ .modal {
+     padding: 50px;
+     text-align: center;
+     background-color: #fff;
+     width: 600px;
+     margin: 0 auto;
+     margin-top: 50px;
+ }

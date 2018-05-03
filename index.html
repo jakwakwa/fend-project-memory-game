@@ -18,21 +18,27 @@
         </header>
 
         <section class="score-panel">
-            <ul class="stars">
-                <li>
-                    <i class="fa fa-star"></i>
-                </li>
-                <li>
-                    <i class="fa fa-star"></i>
-                </li>
-                <li>
-                    <i class="fa fa-star"></i>
-                </li>
-            </ul>
 
-            <span class="moves"></span> Moves
+            <div class="rating-container">
+                <ul class="stars">
+                    <li>
+                        <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                        <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                        <i class="fa fa-star"></i>
+                    </li>
+                </ul>
 
-            <div class="restart">
+                <span class="moves"></span> Moves
+            </div>
+
+            <div id="timer">
+            </div>
+
+            <div id="restart" class="restart">
                 <i class="fa fa-repeat"></i>
             </div>
         </section>
@@ -88,6 +94,30 @@
             </li>
         </ul>
 
+
+
+    </div>
+
+    <div id="modal" class="overlay">
+        <div class="modal">
+
+            <h2>Congratulations! You won!</h2>
+
+            <div class="content-2">
+                <p>With
+                    <span id=finalMove> </span> moves</p>
+                <p>and your rating is:
+                    <span id=starRating></span> stars</p>
+                <p>and your time is:
+                    <span id=totalTime></span> stars</p>
+                <p>Woooooooo!</p>
+            </div>
+
+            <button id="play-again">
+                Play again!</a>
+            </button>
+
+        </div>
     </div>
 
     <script src="js/app.js"></script>
