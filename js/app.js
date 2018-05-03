@@ -8,41 +8,67 @@ let cardDeckHtml = document.getElementsByClassName("card");
  */
 let cards = [...cardDeckHtml];
 
-// deck of all cards in game
+/* 
+ * deck of all cards in game
+ */
 const deck = document.querySelector(".deck");
 
-// deck of all cards in game
+/* 
+ * - Initial moves
+ * - Initial Star/rating number
+ */
 let moves = 0;
 let starNumber = 3;
 
-// declare variables for star icons
+/* 
+ * Rating/star icons
+ */
 const stars = document.querySelectorAll(".fa-star");
 
+/* 
+ * - Counter Element
+ * - set initial counter to 0
+ */
 let counter = document.querySelector('.moves');
-
-// set initial counter to 0
 counter.innerHTML = moves;
 
-// array for opened cards
+/* 
+ * Empty array for opened cards
+ */
 let openedCards = [];
 
-// declaring variable of matchedCards
+/* 
+ * Matched Cards
+ */
 let matchedCard = document.getElementsByClassName("match");
 
-// play again button
+/* 
+ * 'Play again' button
+ */
 const playAgainBtn = document.getElementById('play-again');
 
-// restart button
+/* 
+ * 'Restart Game' icon/button
+ */
 const restartBtn = document.getElementById('restart');
 
-// get modal element
+/* 
+ * - Modal Container
+ * - Modal don't display in the beginning
+ */
 const modal = document.getElementById('modal');
-
-// set initial modal display to 'none'
 modal.style.display = 'none';
 
-// display the card's symbol --> toggles open and show class to display cards
-const displayCard = function () {
+/* 
+ * Initialise Game when window has loaded
+ */
+window.onload = startGame();
+
+
+/* 
+ * display the card's symbol --> toggles open and show class to display cards
+ */
+function displayCard() {
     this.classList.add("open", "show", "disabled");
 }
 
@@ -83,8 +109,9 @@ function startGame() {
 
 }
 
-window.onload = startGame();
-
+/* 
+ * Keep track of how many moves the user makes in the game
+ */
 function moveCounter() {
 
     moves++;
@@ -116,7 +143,9 @@ function moveCounter() {
     }
 }
 
-//game timer
+/* 
+ * Keep track of time when playing the game
+ */
 var second = 0, minute = 0;
 var timer = document.getElementById('timer');
 var interval;
@@ -135,7 +164,9 @@ function startTimer() {
     }, 1000);
 }
 
-//  add the card to a *list* of "open" cards and check if cards are match or not
+/* 
+ * Add the card to a *list* of "open" cards and check if cards are match or not
+ */
 function cardOpen() {
 
     openedCards.push(this);
@@ -157,7 +188,9 @@ function cardOpen() {
     }
 };
 
-// when cards match, then add and remove classes
+/* 
+ * when cards DO match, then add and remove classes
+ */
 function matched() {
     openedCards[0].classList.add("match", "disabled");
     openedCards[1].classList.add("match", "disabled");
@@ -166,7 +199,9 @@ function matched() {
     openedCards = [];
 }
 
-// when cards don't match, then add classes and remove classes after a second
+/* 
+ * when cards DON'T match, then add classes and remove classes after a second
+ */
 function unmatched() {
 
     openedCards[0].classList.add("no-match");
@@ -179,7 +214,9 @@ function unmatched() {
     }, 1000);
 }
 
-// if all cards have matched, display a message with the final score
+/* 
+ * if all cards have matched, display a message with the final score
+ */
 function popupMessage() {
 
     if (matchedCard.length === cards.length) {
@@ -201,7 +238,9 @@ function popupMessage() {
 
 }
 
-// Shuffle function from http://stackoverflow.com/a/2450976
+/* 
+ * Shuffle function from http://stackoverflow.com/a/2450976
+ */
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -215,6 +254,10 @@ function shuffle(array) {
 
     return array;
 }
+
+/* 
+ * Event Listeners
+ */
 
 // loop to add event listeners to each card
 for (let i = 0; i < cards.length; i++) {
