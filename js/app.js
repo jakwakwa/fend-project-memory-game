@@ -60,6 +60,13 @@ const modal = document.getElementById('modal');
 modal.style.display = 'none';
 
 /* 
+ * Keep track of time when playing the game
+ */
+let second = 0, minute = 0;
+const timer = document.getElementById('timer');
+let interval;
+
+/* 
  * Initialise Game when window has loaded
  */
 window.onload = startGame();
@@ -139,12 +146,6 @@ function moveCounter() {
     }
 }
 
-/* 
- * Keep track of time when playing the game
- */
-var second = 0, minute = 0;
-var timer = document.getElementById('timer');
-var interval;
 
 function startTimer() {
     interval = setInterval(function () {
@@ -168,9 +169,15 @@ function cardOpen() {
 
     openedCards.push(this);
 
-    startTimer();
-
     let arrLength = openedCards.length;
+
+    // To make the timer start on first card click
+    if (moves < 1 && arrLength == 1) {
+        second = 0;
+        minute = 0;
+        hour = 0;
+        startTimer();
+    }
 
     // if the list already has another card
     if (arrLength === 2) {
