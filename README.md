@@ -20,7 +20,6 @@ The game randomly shuffles the cards. A player choose any card and try to find i
 
   Jaco Kotzee -- Frontend Web Developer -- @doodlesdigital_
 
-
 ## TECHNOLOGY COLOPHON
 
   CSS3, HTML5, JavaScript
