@@ -38,12 +38,12 @@ h1 {
  */
 
 .deck {
-    width: 660px;
-    min-height: 680px;
+    width: 300px;
+    min-height: 370px;
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
-    padding: 32px;
+    padding: 10px;
     border-radius: 10px;
-    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    box-shadow: 4px 4px 20px 0 rgba(46, 61, 73, 0.5);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -52,8 +52,8 @@ h1 {
 }
 
 .deck .card {
-    height: 125px;
-    width: 125px;
+    height: 60px;
+    width: 60px;
     background: #2e3d49;
     font-size: 0;
     color: #ffffff;
@@ -122,6 +122,13 @@ h1 {
 }
 
 /*
+ * Styles for the reset button
+ */
+.restart .fa {
+    font-size: 25px;
+}
+
+/*
  * Styles for winning popup
  */
 
@@ -138,11 +145,55 @@ h1 {
      padding: 50px;
      text-align: center;
      background-color: #fff;
-     width: 600px;
+     width: 300px;
      margin: 0 auto;
      margin-top: 50px;
  }
 
+ .play-again-btn {
+    background: #02ccba;
+    padding: 10px 25px;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 10px;
+ }
+
  /*
-  * TO DO: Media Queries
+  * Media Queries
   */
+  @media only screen and (min-width: 636px) {
+
+    .restart .fa {
+        font-size: 18px;
+    }
+
+    .deck {
+        width: 500px;
+        min-height: 550px;
+        padding: 32px;
+        box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    }
+    
+    .deck .card {
+        height: 95px;
+        width: 95px;
+    }
+
+    .modal {
+        width: 600px;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+
+    .deck {
+        width: 660px;
+        min-height: 680px;
+    }
+    
+    .deck .card {
+        height: 125px;
+        width: 125px;
+    }
+}
