@@ -90,6 +90,9 @@ function startGame() {
         cards[i].classList.remove("show", "open", "match", "disabled");
     }
 
+    // clear openedCard array
+    openedCards = [];
+
     // reset moves
     moves = 0;
     counter.innerHTML = moves;
