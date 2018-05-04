@@ -47,7 +47,7 @@ const restartBtn = document.getElementById('restart');
  * - Modal don't display in the beginning
  */
 const modal = document.getElementById('modal');
-// modal.style.display = 'none';
+modal.style.display = 'none';
 /* 
  * Keep track of time when playing the game
  */
