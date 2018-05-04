@@ -120,13 +120,6 @@ function moveCounter() {
     moves++;
     counter.innerHTML = moves;
 
-    if (moves == 1) {
-        second = 0;
-        minute = 0;
-        hour = 0;
-        startTimer();
-    }
-
     // setting rates based on moves
     if (moves > 15 && moves < 20) {
         for (i = 0; i < 3; i++) {
@@ -152,6 +145,7 @@ function moveCounter() {
 var second = 0, minute = 0;
 var timer = document.getElementById('timer');
 var interval;
+
 function startTimer() {
     interval = setInterval(function () {
         timer.innerHTML = minute + "mins " + second + "secs";
@@ -173,6 +167,8 @@ function startTimer() {
 function cardOpen() {
 
     openedCards.push(this);
+
+    startTimer();
 
     let arrLength = openedCards.length;
 
