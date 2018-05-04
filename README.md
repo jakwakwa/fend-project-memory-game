@@ -2,7 +2,7 @@
 
 ## How to install game locally
 
-Install the game locally by opening up the index.html file in your web browser
+Install the game locally by opening up the `index.html` file in your web browser (e.g. Google Chrome)
 
 ## How to play the game
 
