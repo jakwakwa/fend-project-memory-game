@@ -7,6 +7,7 @@ let cardDeckHtml = document.getElementsByClassName("card");
  * used spread operator to combine htmlCollection into a new Array
  */
 let cards = [...cardDeckHtml];
+// cards.classList.add("disabled");
 
 /* 
  * deck of all cards in game
@@ -212,13 +213,32 @@ function unmatched() {
     openedCards[0].classList.add("no-match");
     openedCards[1].classList.add("no-match");
 
+    // disable other cards while two cards don't match
+    disableCards();
+
     setTimeout(function () {
         openedCards[0].classList.remove("show", "open", "no-match", "disabled");
         openedCards[1].classList.remove("show", "open", "no-match", "disabled");
         openedCards = [];
+
+        // remove disabled classes after second for the rest of the cards
+        enableCards();
+
     }, 1000);
 }
 
+
+function disableCards() {
+    for (let i = 0; i < cards.length; i++) {
+        cards[i].classList.add("disabled");
+    }
+}
+
+function enableCards() {
+    for (let i = 0; i < cards.length; i++) {
+        cards[i].classList.remove("disabled");
+    }
+}
 /* 
  * if all cards have matched, display a message with the final score
  */
