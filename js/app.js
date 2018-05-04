@@ -239,6 +239,7 @@ function enableCards() {
         cards[i].classList.remove("disabled");
     }
 }
+
 /* 
  * if all cards have matched, display a message with the final score
  */
