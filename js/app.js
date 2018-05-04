@@ -6,7 +6,6 @@ let cardDeckHtml = document.getElementsByClassName("card");
  * used spread operator to combine htmlCollection into a new Array
  */
 let cards = [...cardDeckHtml];
-// cards.classList.add("disabled");
 /* 
  * deck of all cards in game
  */
