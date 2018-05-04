@@ -116,7 +116,6 @@ function startGame() {
 
     clearInterval(interval);
 
-
 }
 
 /* 
@@ -173,7 +172,7 @@ function cardOpen() {
 
     // To make the timer start on first card click
     if (moves < 1 && arrLength == 1) {
-        second = 0;
+        second = 1;
         minute = 0;
         hour = 0;
         startTimer();
